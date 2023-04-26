@@ -13,13 +13,15 @@ import {
 // Data
 import products from "../data/products";
 
-const ProductDetailsScreen = () => {
-  // dummy data
-  const product = products[0];
+const ProductDetailsScreen = ({ route }) => {
+  const { id } = route.params;
+  const product = products.find((prod) => prod.id === id);
   const { width } = useWindowDimensions();
+
   const addToCart = () => {
     console.warn("hola");
   };
+
   return (
     <View>
       <ScrollView showsVerticalScrollIndicator={false}>

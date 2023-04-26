@@ -9,7 +9,7 @@ import cart from "../data/cart";
 
 const ShoppingCartScreen = () => {
   const handleCheckOut = () => {
-    console.warning("Checkout!");
+    console.warn("Checkout!");
   };
   const listFooter = () => <ShoppingCartTotals />;
 

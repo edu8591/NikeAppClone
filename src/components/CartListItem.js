@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
 
 const CartListItem = ({ cartItem }) => {
@@ -12,19 +12,18 @@ const CartListItem = ({ cartItem }) => {
         <Text style={styles.name}>{cartItem.product.name}</Text>
         <Text style={styles.size}>{cartItem.size}</Text>
         <View style={styles.footer}>
-          <Feather
-            name="minus-circle"
-            size={24}
-            color="gray"
-            onPress={decreaseQuantity}
-          />
+          <TouchableOpacity onPress={decreaseQuantity}>
+            <Feather name="minus-circle" size={24} color="gray" />
+          </TouchableOpacity>
           <Text style={styles.quantity}>{cartItem.quantity}</Text>
-          <Feather
-            name="plus-circle"
-            size={24}
-            color="gray"
-            onPress={increaseQuantity}
-          />
+          <TouchableOpacity onPress={increaseQuantity}>
+            <Feather
+              name="plus-circle"
+              size={24}
+              color="gray"
+              style={{ backgroundColor: "rgba(0,0,0,0)" }}
+            />
+          </TouchableOpacity>
           <Text style={styles.itemTotal}>$320</Text>
         </View>
       </View>
