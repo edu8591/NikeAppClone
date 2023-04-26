@@ -22,7 +22,7 @@ const ProductDetailsScreen = () => {
   };
   return (
     <View>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         {/* image carrousel */}
         <FlatList
           horizontal
