@@ -10,4 +10,11 @@ export const store = configureStore({
 });
 
 export { setSelectedProduct } from "./slices/productsSlice";
-export { addCartItem, changeQuantity } from "./slices/cartSlice";
+export {
+  addCartItem,
+  changeQuantity,
+  selectNumberOfItem,
+  selectSubtotal,
+  selectDeliveryPrice,
+  selectTotalPrice,
+} from "./slices/cartSlice";

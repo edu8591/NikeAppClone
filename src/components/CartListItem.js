@@ -31,7 +31,9 @@ const CartListItem = ({ cartItem }) => {
               style={{ backgroundColor: "rgba(0,0,0,0)" }}
             />
           </TouchableOpacity>
-          <Text style={styles.itemTotal}>$320</Text>
+          <Text style={styles.itemTotal}>
+            ${cartItem.product.price * cartItem.quantity}
+          </Text>
         </View>
       </View>
     </View>

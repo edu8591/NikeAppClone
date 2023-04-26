@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 // Components
 import CartListItem from "../components/CartListItem";
 import ShoppingCartTotals from "../components/ShoppingCartTotals";
+
 // data
 
 const ShoppingCartScreen = () => {

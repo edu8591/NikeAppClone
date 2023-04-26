@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createSelector } from "@reduxjs/toolkit";
 import cart from "../../data/cart";
 
 const initialState = {
@@ -35,3 +35,20 @@ export const cartSlice = createSlice({
 });
 
 export const { addCartItem, changeQuantity } = cartSlice.actions;
+export const selectNumberOfItem = (state) => state.cart.items.length;
+export const selectSubtotal = (state) => {
+  return state.cart.items.reduce((acc, item) => {
+    return acc + item.product.price * item.quantity;
+  }, 0);
+};
+const cartSelector = (state) => state.cart;
+export const selectDeliveryPrice = createSelector(
+  cartSelector,
+  selectSubtotal,
+  (cart, subtotal) => (subtotal > cart.freeDeliveryFrom ? 0 : cart.deliveryFee)
+);
+export const selectTotalPrice = createSelector(
+  selectSubtotal,
+  selectDeliveryPrice,
+  (subtotal, delivery) => subtotal + delivery
+);

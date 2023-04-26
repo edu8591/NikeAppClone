@@ -3,7 +3,7 @@ import { Pressable, Text, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { FontAwesome5 } from "@expo/vector-icons";
 
-const HeaderCartIcon = () => {
+const HeaderCartIcon = ({ numberOfItems }) => {
   const navigation = useNavigation();
   const handleNavigateToCart = () => {
     navigation.navigate("Shopping Cart");
@@ -11,7 +11,7 @@ const HeaderCartIcon = () => {
   return (
     <Pressable style={styles.pressable} onPress={handleNavigateToCart}>
       <FontAwesome5 name="shopping-cart" style={styles.icon} />
-      <Text style={styles.text}>5</Text>
+      <Text style={styles.text}>{numberOfItems}</Text>
     </Pressable>
   );
 };
@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
   text: {
     marginLeft: 5,
     fontWeight: 500,
+    color: "gray",
   },
 });
 
