@@ -12,13 +12,14 @@ import {
 
 // Data
 import { useSelector, useDispatch } from "react-redux";
+import { addCartItem } from "../store";
 
 const ProductDetailsScreen = () => {
+  const dispatch = useDispatch();
   const product = useSelector(({ products }) => products.selectedProduct);
   const { width } = useWindowDimensions();
-
   const addToCart = () => {
-    console.warn("hola");
+    dispatch(addCartItem(product));
   };
 
   return (

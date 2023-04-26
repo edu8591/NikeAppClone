@@ -1,13 +1,14 @@
 import React from "react";
 import { View, Text, StyleSheet, FlatList, Pressable } from "react-native";
+import { useSelector } from "react-redux";
 
 // Components
 import CartListItem from "../components/CartListItem";
 import ShoppingCartTotals from "../components/ShoppingCartTotals";
 // data
-import cart from "../data/cart";
 
 const ShoppingCartScreen = () => {
+  const cart = useSelector(({ cart }) => cart.items);
   const handleCheckOut = () => {
     console.warn("Checkout!");
   };

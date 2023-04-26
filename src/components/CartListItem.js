@@ -1,16 +1,23 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
+import { useDispatch } from "react-redux";
+import { changeQuantity } from "../store/index";
 
 const CartListItem = ({ cartItem }) => {
-  const increaseQuantity = () => {};
-  const decreaseQuantity = () => {};
+  const dispatch = useDispatch();
+  const increaseQuantity = () => {
+    dispatch(changeQuantity({ productId: cartItem.product.id, amount: 1 }));
+  };
+  const decreaseQuantity = () => {
+    dispatch(changeQuantity({ productId: cartItem.product.id, amount: -1 }));
+  };
   return (
     <View style={styles.container}>
       <Image source={{ uri: cartItem.product.image }} style={styles.image} />
       <View style={styles.contentContainer}>
         <Text style={styles.name}>{cartItem.product.name}</Text>
-        <Text style={styles.size}>{cartItem.size}</Text>
+        <Text style={styles.size}>size {cartItem.size}</Text>
         <View style={styles.footer}>
           <TouchableOpacity onPress={decreaseQuantity}>
             <Feather name="minus-circle" size={24} color="gray" />
