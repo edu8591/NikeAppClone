@@ -6,3 +6,5 @@ export const store = configureStore({
     products: productsSlice.reducer,
   },
 });
+
+export { setSelectedProduct } from "./slices/productsSlice";
