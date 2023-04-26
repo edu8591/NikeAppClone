@@ -8,13 +8,16 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-
+import { useSelector, useDispatch } from "react-redux";
+import { setSelectedProduct } from "../store";
 // data
-import products from "../data/products";
 
 const ProductsScreen = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const products = useSelector(({ products }) => products.products);
   const handleProductPress = (id) => {
+    dispatch(setSelectedProduct(id));
     navigation.navigate("Product Detail", { id });
   };
 

@@ -11,11 +11,10 @@ import {
 } from "react-native";
 
 // Data
-import products from "../data/products";
+import { useSelector, useDispatch } from "react-redux";
 
-const ProductDetailsScreen = ({ route }) => {
-  const { id } = route.params;
-  const product = products.find((prod) => prod.id === id);
+const ProductDetailsScreen = () => {
+  const product = useSelector(({ products }) => products.selectedProduct);
   const { width } = useWindowDimensions();
 
   const addToCart = () => {
