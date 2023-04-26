@@ -7,6 +7,7 @@ import {
   FlatList,
   useWindowDimensions,
   ScrollView,
+  Pressable,
 } from "react-native";
 
 // Data
@@ -16,6 +17,9 @@ const ProductDetailsScreen = () => {
   // dummy data
   const product = products[0];
   const { width } = useWindowDimensions();
+  const addToCart = () => {
+    console.warn("hola");
+  };
   return (
     <View>
       <ScrollView>
@@ -44,6 +48,9 @@ const ProductDetailsScreen = () => {
         </View>
       </ScrollView>
       {/* add to car button */}
+      <Pressable style={styles.button} onPress={addToCart}>
+        <Text style={styles.buttonText}>Add to cart</Text>
+      </Pressable>
       {/* navigation icon */}
     </View>
   );
@@ -63,8 +70,23 @@ const styles = StyleSheet.create({
   description: {
     fontSize: 18,
     fontWeight: 300,
-    lineHight: 30,
+    lineHeight: 30,
     marginVertical: 10,
+  },
+  button: {
+    position: "absolute",
+    backgroundColor: "black",
+    bottom: 30,
+    width: "90%",
+    alignSelf: "center",
+    padding: 20,
+    borderRadius: 100,
+    alignItems: "center",
+  },
+  buttonText: {
+    color: "white",
+    fontWeight: 500,
+    fontSize: 18,
   },
 });
 
