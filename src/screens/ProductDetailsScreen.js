@@ -8,20 +8,31 @@ import {
   useWindowDimensions,
   ScrollView,
   Pressable,
+  ActivityIndicator,
 } from "react-native";
 
 // Data
 import { useSelector, useDispatch } from "react-redux";
 import { addCartItem } from "../store";
+import { useGetProductQuery } from "../store";
 
-const ProductDetailsScreen = () => {
+const ProductDetailsScreen = ({ route }) => {
+  const { id } = route.params;
   const dispatch = useDispatch();
-  const product = useSelector(({ products }) => products.selectedProduct);
+  const { data, isLoading, error } = useGetProductQuery(id);
+  // const product = useSelector(({ products }) => products.selectedProduct);
   const { width } = useWindowDimensions();
   const addToCart = () => {
     dispatch(addCartItem(product));
   };
-
+  console.log(data);
+  if (isLoading) {
+    return <ActivityIndicator />;
+  }
+  if (error) {
+    return <Text>There was an error {error.error}</Text>;
+  }
+  const product = data.data;
   return (
     <View>
       <ScrollView showsVerticalScrollIndicator={false}>
