@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { productsSlice } from "./slices/productsSlice";
 import { cartSlice } from "./slices/cartSlice";
-import { apiSlice } from "./apis/spiSlice";
+import { apiSlice } from "./apis/apiSlice";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
 
 export const store = configureStore({
@@ -24,4 +24,9 @@ export {
   selectDeliveryPrice,
   selectTotalPrice,
 } from "./slices/cartSlice";
-export { useGetProductsQuery, useGetProductQuery } from "./apis/spiSlice";
+export {
+  useGetProductsQuery,
+  useGetProductQuery,
+  useCreateOrderMutation,
+  useGetOrderQuery,
+} from "./apis/apiSlice";
