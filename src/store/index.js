@@ -23,6 +23,7 @@ export {
   selectSubtotal,
   selectDeliveryPrice,
   selectTotalPrice,
+  clearCart,
 } from "./slices/cartSlice";
 export {
   useGetProductsQuery,
